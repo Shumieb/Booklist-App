@@ -76,3 +76,4 @@ C:\Users\schir\OneDrive\Documents\Programming Personal Projects\Blazor Projects\
 C:\Users\schir\OneDrive\Documents\Programming Personal Projects\Blazor Projects\BookList\BookList\obj\Debug\net9.0\BookList.pdb
 C:\Users\schir\OneDrive\Documents\Programming Personal Projects\Blazor Projects\BookList\BookList\obj\Debug\net9.0\BookList.genruntimeconfig.cache
 C:\Users\schir\OneDrive\Documents\Programming Personal Projects\Blazor Projects\BookList\BookList\obj\Debug\net9.0\ref\BookList.dll
+C:\Users\schir\OneDrive\Documents\Programming Personal Projects\Blazor Projects\BookList\BookList\obj\Debug\net9.0\BookList.sourcelink.json
