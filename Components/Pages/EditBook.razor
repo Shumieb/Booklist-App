@@ -1,10 +1,93 @@
 ﻿@page "/edit-book"
+@using System.Diagnostics
 @rendermode InteractiveServer
 
 <PageTitle>Edit Book</PageTitle>
 
-<h3>EditBook</h3>
+<h3 class="mb-4 text-center">Edit Book</h3>
+
+@if (book is not null && authors is not null)
+{
+    <EditForm Model="@book" FormName="editBook" OnValidSubmit="HandleSubmitAsync" Enhance class="mb-3 mx-auto w-75">
+        <div class="mb-3">
+            <label for="title" class="form-label fs-5">Title</label>
+            <InputText id="title" @bind-Value="book.Title" class="form-control fs-5" />
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label fs-5">Author</label>
+            <InputSelect id="author" @bind-Value="book.AuthorId" class="form-select fs-5">
+                <option value="">Select an Author</option>
+                @foreach (var author in authors)
+                {
+                    <option value="@author.Id">@author.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="mb-3">
+            <label for="summary" class="form-label fs-5">Summary</label>
+            <InputTextArea id="summary" @bind-Value="book.Summary" class="form-control fs-5" />
+        </div>
+        <div class="mb-3">
+            <label for="imgUrI" class="form-label fs-5">Image UrI</label>
+            <InputText id="imgUrI" @bind-Value="book.ImageUrI" class="form-control fs-5" />
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label fs-5">Status</label>
+            <InputSelect id="status" @bind-Value="book.StatusID" class="form-select fs-5">
+                <option value="">Select an Status</option>
+                @foreach (var status in statuses)
+                {
+                    <option value="@status.Id">@status.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="mb-3">
+            <label for="note" class="form-label fs-5">Note</label>
+            <InputTextArea id="note" @bind-Value="book.Note" class="form-control fs-5" />
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary fs-5">Save</button>
+            <a role="btn" class="btn btn-secondary fs-5" href="/">Cancel</a>
+        </div>
+    </EditForm>
+}
 
 @code {
+
+    [SupplyParameterFromForm]
+    private BookDetails? book { get; set; }
+
+    private Author[] authors = {
+new Author {Id=1, Name="JK Rowlings"},
+new Author {Id=2, Name="Author 2"},
+new Author {Id=3, Name="Steven Fry"},
+};
+
+    private Status[] statuses = {
+new Status {Id=1, Name="Read"},
+new Status {Id=2, Name="Reading"},
+new Status {Id=3, Name="Not Started"},
+};
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine("On Parameter Set in edit book");
+        book = new BookDetails
+        {
+            Id = 1,
+            Title = "Harry Potter and the philosopher's stone",
+            Note = "",
+            Summary = "",
+            Rating = 4,
+            StatusID = 1,
+            AuthorId = 1,
+            ImageUrI = "",
+        };
+    }
+
+    private async Task HandleSubmitAsync()
+    {
+        Console.WriteLine("Handle Submit in edit book");
+    }
 
 }
