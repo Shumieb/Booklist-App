@@ -1,10 +1,40 @@
 ﻿@page "/delete-book"
 @rendermode InteractiveServer
 
-<PageTitle>Delete Book</PageTitle>
+<PageTitle>Remove Book</PageTitle>
 
-<h3>Delete Book</h3>
+<h3 class="mb-4 text-center">Remove Book</h3>
+
+<div class="mb-4">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="https://images.pexels.com/photos/17528771/pexels-photo-17528771.jpeg" class="img-fluid rounded"
+                style="height: 20rem; width: 100%" alt="book picture">
+        </div>
+        <div class="col-md-8 ps-3 py-1 d-flex flex-column justify-content-between">
+            <div>
+                <h4>Harry Potter and the philosopher's stone</h4>
+                <p class="text-secondary">By JK Rowlings</p>
+                <p class="card-text bg-success text-white py-1 rounded px-1 text-center" style="width: 8rem;">Read
+                </p>
+                <p>This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+                <p>Rating</p>
+            </div>
+            <div class="my-3 d-flex justify-content-start align-items-center">
+                <button @onclick="HandleSubmitAsync" type="button" class="btn btn-danger fs-5 px-4 d-block me-3">Remove
+                    Book From My Booklist</button>
+                <a role="btn" class="btn btn-warning fs-5 d-block" href="/">Cancel</a>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 @code {
 
+    private void HandleSubmitAsync()
+    {
+        Console.WriteLine("Handle Submit in delete book");
+    }
 }
